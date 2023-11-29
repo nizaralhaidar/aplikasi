@@ -19,8 +19,8 @@ $result = mysqli_query($mysqli,"SELECT * FROM barang WHERE id=$id");
 while ($user_data = mysqli_fetch_array($result)) 
 {
     $name = $user_data['name'];
-    $email = $user_data['harga'];
-    $mobile = $user_data['stok']; // Perbaikan: Menghapus tanda koma yang tidak perlu
+    $harga = $user_data['harga'];
+    $stok = $user_data['stok']; // Perbaikan: Menghapus tanda koma yang tidak perlu
 }
 ?>
 <html>

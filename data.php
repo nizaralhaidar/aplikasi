@@ -75,11 +75,16 @@ class Barang extends User {
         mysqli_stmt_bind_param($stmt, "sss", $nama, $harga, $stok);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-    }
-}
 
-$barangObjek = new Barang("Shampoo", "20000", "10");
-$barangObjek->saveToDatabase();
+        $barangObjek = new Barang("shampo", "10000", "2");
+        
+
+    }
+
+}
+// Membuat beberapa objek barang dan menyimpannya ke database
+$barang1 = new Barang("titit", "10000", "5");
+$barang1->saveToDatabase();
 
 $result = mysqli_query($mysqli, "SELECT * FROM barang ORDER BY id DESC");
 ?>
@@ -97,13 +102,16 @@ $result = mysqli_query($mysqli, "SELECT * FROM barang ORDER BY id DESC");
             <th>Name</th><th>Harga</th><th>Stok</th><th>Update</th>
         </tr>
          <?php
-        while ($barang_data = mysqli_fetch_array($result)) {
-            echo "<tr>";
-            echo "<td>".$barang_data['name']."</td>";
-            echo "<td>".$barang_data['harga']."</td>";
-            echo "<td>".$barang_data['stok']."</td>";
-            echo "<td><a href='edit.php?id=".$barang_data['id']."'>Edit</a> | <a href='delete.php?id=".$barang_data['id']."'>Delete</a></td></tr>";
-        }
+       while ($barang_data = mysqli_fetch_array($result)) {
+    echo "<tr>";
+    echo "<td>".$barang_data['name']."</td>";
+    echo "<td>".$barang_data['harga']."</td>";
+    echo "<td>".$barang_data['stok']."</td>";
+    echo "<td>
+            <a href='edit.php?id=".$barang_data['id']."'>Edit</a> | 
+            <a href='delete.php?id=".$barang_data['id']."'>Delete</a>
+          </td></tr>";
+}
         ?>
     </table>
 </body>
